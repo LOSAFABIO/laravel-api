@@ -18,9 +18,13 @@ class PostController extends Controller
 {
 
     protected $validation = [
-        'title' => 'required|max:255',
-        'content' => 'required',
-        'category_id' => 'nullable|exsist:categories_id'
+        "title"=>"required|string|max:80",
+        "content"=>"required|string|max:255",
+        "post_date"=>"required",
+        "author"=>"required",
+        "slug"=>"nullable",
+        "category_id"=>"nullable",
+        "tag_id"=>"nullable"
     ];
 
     /**
@@ -57,15 +61,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $validated_data = $request->validate([
-            "title"=>"required|string|max:80",
-            "content"=>"required|string|max:255",
-            "post_date"=>"required",
-            "author"=>"required",
-            "slug"=>"nullable",
-            "category_id"=>"nullable",
-            "tag_id"=>"nullable"
-        ]);
+        $request->validate($this->validation);
 
         $validated_data = $request->all();
 
@@ -121,14 +117,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $validated_data = $request->validate([
-            "title"=>"required|string|max:80",
-            "content"=>"required|string|max:255",
-            "post_date"=>"required",
-            "author"=>"required",
-            "category_id"=>"nullable",
-            "tag_id"=>"nullable"
-        ]);
+        $request->validate($this->validation);
 
         $validated_data = $request->all();
 
