@@ -78,6 +78,8 @@ class PostController extends Controller
 
         $post = Post::create($validated_data);
 
+        //$post->fill($validated_date);    Al posto di ::create in riga 79.
+
         $post->tags()->sync($validated_data['tags']);
 
         return redirect()->route('admin.posts.index', $post->id);
