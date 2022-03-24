@@ -18,7 +18,12 @@ class PostController extends Controller
     public function index()
     {
             $posts = Post::all();
-        // var_dump($posts);
+
+            foreach ($posts as $post) {
+                // var_dump($post->tags);
+                $post['tags'] = $post->tags;
+
+            }
             return response()->json($posts); // + $tags
     }
 

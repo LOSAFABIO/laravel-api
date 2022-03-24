@@ -9,7 +9,8 @@
                 <h1>Autore</h1>{{post.author}}
                 <h1>Slug</h1>{{post.slug}}
                 <h1>Categoria</h1>{{post.category_id}}
-                <h1>Tags</h1>{{post.tags}}
+                <h1>Tags</h1><p v-for="(tag, index) in post.tags" :key="index">{{tag.name}}</p>
+                
             </li>
         </ol>
     </div>
@@ -26,7 +27,7 @@ export default ({
                 // "titolo1",
                 // "titolo2",
                 // "titolo3"
-            ]
+            ],
         }
     },
     created(){
