@@ -18,8 +18,8 @@ class PostController extends Controller
     public function index()
     {
             $posts = Post::all();
-        
-            return response()->json($posts);
+        // var_dump($posts);
+            return response()->json($posts); // + $tags
     }
 
     /**
